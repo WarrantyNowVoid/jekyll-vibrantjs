@@ -14,7 +14,10 @@ module Jekyll
 
         if File.exist?(image_path)
           script_path = File.expand_path('./call-vibrant.js', File.dirname(__FILE__))
-          stdout, status = Open3.capture2('node', script_path, image_path)
+          node_modules_path = File.join Dir.pwd, "node_modules"
+
+          stdout, status = Open3.capture2({"NODE_PATH" => node_modules_path}, 'node', script_path, image_path)
+          
           raise "Failed to call vibrantjs" unless status.success?
         else
           raise "Given image file `#{image_path}` doesn't exist"

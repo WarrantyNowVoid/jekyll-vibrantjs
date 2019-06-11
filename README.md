@@ -2,23 +2,41 @@
 
 Generate a set of CSS override rules from a template based on the prominent colors from a given image.
 
-## Prereqs
+## Why?
 
-Requires `node-vibrant` installed (<https://github.com/akfish/node-vibrant/>). This can be done one of two ways:
+Doesn't Vibrantjs have an in-browser library that can do all this in real time? Yes, but with Jekyll we have an opportunity to do all the work to generate the entire static site before even deploying it to the web. So if we're using these colors to theme static pages, why *wouldn't* we take advantage of that, rather than potentially putting all that work on the browser, eating up users' batteries, or even showing the un-themed version for a few seconds before processing is completed.
 
-### Install in your jekyll project 
+## Prerequisites
 
-If you have an existing `package.json`, just add it there and run `npm install`. Otherwise, at the root level of your project, run `npm install node-vibrant` (and remember to add `node_modules` to your `.gitignore` file).
+Requires `node-vibrant` installed (<https://github.com/akfish/node-vibrant/>).
 
-### Install globally 
+### Installing `node-vibrant` in your jekyll project 
 
-Ideal when running on disposable build environments like a Docker container, you can just install it globally to make it available on the `PATH` with `npm install -G node-vibrant`. 
+If you have an existing `package.json`, just add it there and run `npm install`. Otherwise, at the root level of your project, run `npm install node-vibrant` (and remember to add `node_modules` to your `.gitignore` file and check in the new `package-lock.json`).
 
 ## Installation
 
 (https://jekyllrb.com/docs/plugins/installation/)
 
 One of two options:
+
+### Bundler Config
+:warning: **If using bundler with a vendor prefix, this is the required method**
+
+1. In your `Gemfile`, add the `jekyll_plugins` group if it doesn't already exist, and add `jekyll-vibrantjs` to it. For example: 
+
+  ```ruby
+  group :jekyll_plugins do
+    gem "jekyll-vibrantjs"
+  end
+  ```
+
+2. Tell bundler to install any plugins with
+
+  ```
+  $ bundle install
+  ```
+
 
 ### Jekyll Config
 
@@ -33,22 +51,6 @@ One of two options:
 
   ```
   $ gem install jekyll-vibrantjs
-  ```
-
-### Bundler Config
-
-1. In your `Gemfile`, add the `jekyll_plugins` group if it doesn't already exist, and add `jekyll-vibrantjs` to it. For example: 
-
-	```ruby
-	group :jekyll_plugins do
-	  gem "jekyll-vibrantjs"
-	end
-	```
-
-2. Tell bundler to install any plugins with
-
-  ```
-  $ bundle install
   ```
 
 ## Usage
