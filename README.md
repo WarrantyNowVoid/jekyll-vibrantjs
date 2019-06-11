@@ -31,7 +31,9 @@ One of two options:
 
 2. Install this gem
 
-    $ gem install jekyll-vibrantjs
+  ```
+  $ gem install jekyll-vibrantjs
+  ```
 
 ### Bundler Config
 
@@ -45,7 +47,9 @@ One of two options:
 
 2. Tell bundler to install any plugins with
 
-    $ bundle install
+  ```
+  $ bundle install
+  ```
 
 ## Usage
 
@@ -77,7 +81,7 @@ Or just a variable:
 
 At build time, this tag will be replaced with CSS using the colors extracted from the given image. The default CSS template will generate a style tag containing override (using `!important`) class rules for each of the six extracted colors to be used as a CSS `color` property or `background-color`, including `:hover` states. For example:
 
-````html
+```html
 <style type="text/css">
   /* background-color */
   .background-color-vibrant{ background-color: rgba(124, 76, 36, 1) !important; }
@@ -108,7 +112,7 @@ At build time, this tag will be replaced with CSS using the colors extracted fro
   .hover-color-light-muted:hover{ color: rgba(190, 190, 157, 1) !important; }
   .hover-color-dark-muted:hover{ color: rgba(63, 63, 61, 1) !important; }
 </style>
-````
+```
 
 Use these classes in your HTML to dynamically change these colors for some particular image source.
 
